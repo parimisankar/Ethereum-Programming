@@ -1,0 +1,64 @@
+# Testrpc emulates the ethereum node for development purposes.
+# Always test with full ethereum node before moving to mainNet.
+
+# Create a folder to host database and accounts of private node
+mkdir -p ~/ethereum-programming/private
+
+# Choose a network identifier
+# 1 - for mainchain network
+# 2 - for rockstone test network
+# 3 - for modern test network
+# 4224 - for our purposes
+
+# Create a genesis block
+atom ~/ethereum-programming/private/genesis.json
+
+# Copy and Paste the following text to "~/ethereum-programming/private/genesis.json"
+##############################################################################################
+{
+ "nonce": "0x0000000000000042",
+ "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+ "difficulty": "0x400",
+ "alloc": {},
+ "coinbase": "0x0000000000000000000000000000000000000000",
+ "timestamp": "0x0",
+ "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+ "extraData": "0x",
+ "gasLimit": "0xffffffff",
+ "config": {
+    "chainId": 4224,
+    "homesteadBlock": 0,
+    "eip155Block": 0,
+    "eip158Block": 0
+ }
+}
+##############################################################################################
+# nonce       - used by proof of work consensus mechanism to ensure enough computation is used 
+# mixhash     - used by proof of work consensus mechanism to ensure enough computation is used
+# difficulty  - difficulty level used to validate a block i.e., avg. number of times a miner runs hashing function to solve consensus puzzle
+# alloc       - you can preallocate funds to some wallet addresses
+# coinbase    - the address at which the reward will be collected after successful mining of the block
+# timestamp   - used by EVM to adjust the level od difficulty that must be applied. the higher timestamp, the higher difficulty
+#             - also used to ensure the sequence order between blocks is correct
+# parentHash  - the hash of previous block. for genesis block, it is zero
+# extraData   - stores any information to lable blockchain
+# gasLimit    - defines the maximum value of gas that can be spent for a block. Thus, limits the size of block.
+# config      - section used to define parameters for the chain
+#   chainId        - specifies network id
+#   homesteadBlock - defines the sequence number of the block starting from which homestead protocol should be applied
+#   eip155Block    - 
+#   eip158Block    - 
+##############################################################################################
+
+# Initiatialize the private ethereum network
+geth --datadir ~/ethereum-programming/private init genesis.json
+# You will see
+##############################################################################################
+WARN [01-26|14:44:34] No etherbase set and no accounts found as default
+INFO [01-26|14:44:34] Allocated cache and file handles         database=C:\\Users\\Jai\\ethereum-programming\\private\\geth\\chaindata cache=16 handles=16
+INFO [01-26|14:44:35] Writing custom genesis block
+INFO [01-26|14:44:35] Successfully wrote genesis state         database=chaindata                                                      hash=272003…b62890
+INFO [01-26|14:44:35] Allocated cache and file handles         database=C:\\Users\\Jai\\ethereum-programming\\private\\geth\\lightchaindata cache=16 handles=16
+INFO [01-26|14:44:35] Writing custom genesis block
+INFO [01-26|14:44:35] Successfully wrote genesis state         database=lightchaindata                                                      hash=272003…b62890
+##############################################################################################
