@@ -62,3 +62,27 @@ INFO [01-26|14:44:35] Allocated cache and file handles         database=C:\\User
 INFO [01-26|14:44:35] Writing custom genesis block
 INFO [01-26|14:44:35] Successfully wrote genesis state         database=lightchaindata                                                      hash=272003…b62890
 ##############################################################################################
+
+# Check the created folders
+tree .
+# You will see
+##############################################################################################
+Folder PATH listing for volume OS
+Volume serial number is 00000029 CA30:A8F4
+C:\USERS\JAI\ETHEREUM-PROGRAMMING\PRIVATE
+├───geth
+│   ├───chaindata
+│   └───lightchaindata
+└───keystore
+##############################################################################################
+# Two folders created
+# geth     - contains all chain data
+# keystore - contains all the accounts data
+##############################################################################################
+
+# Create 3 accounts, 1 - to hold ether rewards from mining, 2 - to be used to create DApp
+# For testing, use same password for all three accounts
+geth --datadir ~/ethereum-programming/private account new
+# Mining Address: {62cb9a1038c19b9c6ca631b8dc5c2b0440159755}
+# DApp 1 Address: {a74dbc1a52639a28848d174e84d389441aa7a833}
+# DApp 2 Address: {83c009212d77318ce54b80de1913a9530dcb2400}
