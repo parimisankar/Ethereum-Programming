@@ -81,8 +81,11 @@ C:\USERS\JAI\ETHEREUM-PROGRAMMING\PRIVATE
 ##############################################################################################
 
 # Create 3 accounts, 1 - to hold ether rewards from mining, 2 - to be used to create DApp
-# For testing, use same password for all three accounts
 geth --datadir ~/ethereum-programming/private account new
+# For testing, use same password for all three accounts
+
+# Get the list of all accounts
+geth --datadir ~/ethereum-programming/private account list
 # Mining Address: {62cb9a1038c19b9c6ca631b8dc5c2b0440159755}
 # DApp 1 Address: {a74dbc1a52639a28848d174e84d389441aa7a833}
 # DApp 2 Address: {83c009212d77318ce54b80de1913a9530dcb2400}
