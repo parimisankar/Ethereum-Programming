@@ -29,4 +29,5 @@ chmod a+x startnode.sh
 
 # Start the node
 ./startnode.sh
-# DAG generation process will take time. Please be patient
+# DAG generation process will take time. Please be patient till it reaches 100%
+# Open a new terminal after DAG generation is complete. Leave the terminal running. 
