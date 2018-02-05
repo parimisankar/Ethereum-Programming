@@ -1,6 +1,6 @@
-# Need Curl, Nodejs, Geth, testrpc, truffle, atom
+# Need Tree, Curl, Nodejs, Geth, testrpc, truffle, atom
 
-# For Curl, Nodejs
+# For Tree, Curl, Nodejs
 sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get install tree curl && curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - && sudo apt-get update && sudo apt-get install -y nodejs
 
 # For Geth
