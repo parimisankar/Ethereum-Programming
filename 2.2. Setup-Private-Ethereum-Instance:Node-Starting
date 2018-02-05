@@ -1,10 +1,32 @@
 # To start a node and mine ether, we will need a script
 
 # Create a file startnode.sh
-cd ~/ethereum-programming/private/ && atom startnode.sh &
-
+cd ~/ethereum-programming/private/ && atom startnode.sh
 # Copy, Paste the following script in the startnode.sh
-###################################################################################################################################################################################################################################################################################
-geth --networkid 4224 --mine --datadir "~/ChainSkills/private" --nodiscover --rpc --rpcport "8545" --port "30303" --rpccorsdomain "*" --nat "any" --rpcapi eth,web3,personal,net --unlock 0 --password ~/ethereum-programming/private/password.sec --ipcpath "~/.ethereum/geth.ipc"
-###################################################################################################################################################################################################################################################################################
-# 
+############################################################################################################################################################################################################################################################################################
+geth --networkid 4224 --mine --datadir "~/ethereum-programming/private" --nodiscover --rpc --rpcport "8545" --port "30303" --rpccorsdomain "*" --nat "any" --rpcapi eth,web3,personal,net --unlock 0 --password ~/ethereum-programming/private/password.sec --ipcpath "~/.ethereum/geth.ipc"
+############################################################################################################################################################################################################################################################################################
+# networkid    - comes from the config file in genesis.json
+# mine         - indicates that the node should start mining as soon as it is started (--mine enables mining functionality)
+# data dir     - indicates the directory where data is stored
+# nodiscover   - disables peer discovery (by default, peer discovery is on)
+# rpc, rpcport - enables the http rpc server for listening
+# port         - port number used by nodes to spread new transactions and blocks
+# rpccorsdomain - enables any ip address to connect to rpc endpoint
+# nat           - specifies the nat parameter
+# rpc api       - lists apis we want to enable on rpc endpoint
+# unlock 0      - unlocks Account 0 created in previous step
+# password      - password to unlock Account 0
+# ipcpath       - creates an ipc file which a flag used by mist to learn if a node is running or not
+############################################################################################################################################################################################################################################################################################
+
+# Create a file password.sec
+cd ~/ethereum-programming/private/ && atom password.sec
+# Add password for Account 0 "1234" and save the file
+
+# Make the startnode.sh executable
+chmod a+x startnode.sh
+
+# Start the node
+./startnode.sh
+# DAG generation process will take time. Please be patient
