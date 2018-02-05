@@ -13,7 +13,7 @@ mkdir -p ~/ethereum-programming/private
 # Create a genesis block
 atom ~/ethereum-programming/private/genesis.json
 
-# Copy and Paste the following text to "~/ethereum-programming/private/genesis.json"
+# Copy-Paste the following text and save to "~/ethereum-programming/private/genesis.json"
 ##############################################################################################
 {
  "nonce": "0x0000000000000042",
@@ -51,6 +51,7 @@ atom ~/ethereum-programming/private/genesis.json
 ##############################################################################################
 
 # Initiatialize the private ethereum network
+cd ~/ethereum-programming/private
 geth --datadir ~/ethereum-programming/private init genesis.json
 # You will see
 ##############################################################################################
@@ -67,13 +68,24 @@ INFO [01-26|14:44:35] Successfully wrote genesis state         database=lightcha
 tree .
 # You will see
 ##############################################################################################
-Folder PATH listing for volume OS
-Volume serial number is 00000029 CA30:A8F4
-C:\USERS\JAI\ETHEREUM-PROGRAMMING\PRIVATE
-├───geth
-│   ├───chaindata
-│   └───lightchaindata
-└───keystore
+.
+├── genesis.json
+├── geth
+│   ├── chaindata
+│   │   ├── 000001.log
+│   │   ├── CURRENT
+│   │   ├── LOCK
+│   │   ├── LOG
+│   │   └── MANIFEST-000000
+│   └── lightchaindata
+│       ├── 000001.log
+│       ├── CURRENT
+│       ├── LOCK
+│       ├── LOG
+│       └── MANIFEST-000000
+└── keystore
+
+4 directories, 11 files
 ##############################################################################################
 # Two folders created
 # geth     - contains all chain data
@@ -86,6 +98,6 @@ geth --datadir ~/ethereum-programming/private account new
 
 # Get the list of all accounts
 geth --datadir ~/ethereum-programming/private account list
-# Mining Address: {62cb9a1038c19b9c6ca631b8dc5c2b0440159755}
-# DApp 1 Address: {a74dbc1a52639a28848d174e84d389441aa7a833}
-# DApp 2 Address: {83c009212d77318ce54b80de1913a9530dcb2400}
+# Mining Address - Account #0: {9345500c7d57035d460f18fd632b2b93f4d5e7d6} keystore:///home/lavanya/ethereum-programming/private/keystore/UTC--2018-02-05T18-03-02.909010930Z--9345500c7d57035d460f18fd632b2b93f4d5e7d6
+# DApp 1 Address - Account #1: {91744d742fcbdb3918e7714858a08d0f2b701b35} keystore:///home/lavanya/ethereum-programming/private/keystore/UTC--2018-02-05T18-03-30.702611423Z--91744d742fcbdb3918e7714858a08d0f2b701b35
+# DApp 1 Address - Account #2: {5bf6ab5f9e3579f48769bbbb8336adc7a3b9a869} keystore:///home/lavanya/ethereum-programming/private/keystore/UTC--2018-02-05T18-03-56.509877156Z--5bf6ab5f9e3579f48769bbbb8336adc7a3b9a869
