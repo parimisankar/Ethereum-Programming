@@ -1,0 +1,30 @@
+# In new terminal and attach the console to the private network
+geth attach
+
+##########################################################################################
+# Confirm that the coinbase matches the Account 0 created in step 2.1.
+# Confirm datadir matches your data directory.
+# If they don't match, the commandline is attached to another node you tested in the past.
+# Makesure you stopped the other node you tested in the past.
+##########################################################################################
+
+# Console Commands
+# To learn about the console commands, visit https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console
+eth.accounts                                        # Get all the accounts
+eth.coinbase                                        # Get the account attached to the node
+eth.getBalance(eth.coinbase)                        # Get the balance in wei
+web3.fromWei(eth.getBalance(eth.coinbase), "ether") # Convert between wei and ether
+
+# Interact with the miner
+miner.stop()                                        # Stop the miner
+miner.start()                                       # Start a miner
+miner.start(2)                                      # takes number of threads to mine
+net.version                                         # Gives the network identifier
+personal.unlockAccount(eth.accounts[1], "1234", 10) # unlocks an account - eth.accounts[acc.no], password, time it should be unlocked
+eth.sendTransaction({from:eth.coinbase,to:eth.accounts[1],value:web3.toWei(100, "ether")}) # To send transaction from one account to other
+
+# exit the console
+exit
+
+# Stop the miner
+Ctrl + C
