@@ -1,10 +1,15 @@
+# SUMMARY:
+# 1. Create a script & password.sec to run the node
+# 2. 
 # To start a node and mine ether, we will need a script
 
 # Create a file startnode.sh
-cd ~/ethereum-programming/private/ && atom startnode.sh
+cd ~/ethereum-programming/private/
+atom startnode.sh
+
 # Copy, Paste the following script in the startnode.sh
 ############################################################################################################################################################################################################################################################################################
-geth --networkid 4224 --mine --datadir "~/ethereum-programming/private" --nodiscover --rpc --rpcport "8545" --port "30303" --rpccorsdomain "*" --nat "any" --rpcapi eth,web3,personal,net --unlock 0 --password ~/ethereum-programming/private/password.sec --ipcpath "~/.ethereum/geth.ipc"
+geth --networkid 4224 --mine --datadir "." --nodiscover --rpc --rpcport "8545" --port "30303" --rpccorsdomain "*" --nat "any" --rpcapi eth,web3,personal,net --unlock 0 --password ./password.sec
 ############################################################################################################################################################################################################################################################################################
 # networkid    - comes from the config file in genesis.json
 # mine         - indicates that the node should start mining as soon as it is started (--mine enables mining functionality)
@@ -21,13 +26,39 @@ geth --networkid 4224 --mine --datadir "~/ethereum-programming/private" --nodisc
 ############################################################################################################################################################################################################################################################################################
 
 # Create a file password.sec
-cd ~/ethereum-programming/private/ && atom password.sec
-# Add password for Account 0 "1234" and save the file
-
-# Make the startnode.sh executable
-chmod a+x startnode.sh
+cd ~/ethereum-programming/private/
+atom password.sec
+# Add password for Account 0 "pass1234" and save the file
 
 # Start the node
 ./startnode.sh
 # DAG generation process will take time. Please be patient till it reaches 100%
-# Open a new terminal after DAG generation is complete. Leave the terminal running. 
+# Open a new terminal after DAG generation is complete. Leave the terminal running.
+############################################################################################################################################################################################################################################################################################
+# C:\Users\Jai\ethereum-programming\private>geth --networkid 4224 --mine --minerthreads 2 --datadir "." --nodiscover --rpc --rpcport "8545" --port "30303" --rpccorsdomain "*" --nat "any" --rpcapi eth,web3,personal,net--unlock 0 --password ./password.sec
+# INFO [02-19|18:09:11] Maximum peer count                       ETH=25 LES=0 total=25
+# INFO [02-19|18:09:11] Starting peer-to-peer node               instance=Geth/v1.8.1-stable-1e67410e/windows-amd64/go1.9.2
+# INFO [02-19|18:09:11] Allocated cache and file handles         database=C:\\Users\\Jai\\ethereum-programming\\private\\geth\\chaindata cache=768 handles=1024
+# WARN [02-19|18:09:11] Upgrading database to use lookup entries
+# INFO [02-19|18:09:11] Initialised chain configuration          config="{ChainID: 4224 Homestead: 1 DAO: <nil> DAOSupport: false EIP150: 2 EIP155: 3 EIP158: 3 Byzantium: 4 Engine: ethash}"
+# INFO [02-19|18:09:11] Database deduplication successful        deduped=0
+# INFO [02-19|18:09:11] Disk storage enabled for ethash caches   dir=C:\\Users\\Jai\\ethereum-programming\\private\\geth\\ethash count=3
+# INFO [02-19|18:09:11] Disk storage enabled for ethash DAGs     dir=C:\\Users\\Jai\\AppData\\Ethash                             count=2
+# INFO [02-19|18:09:11] Initialising Ethereum protocol           versions="[63 62]" network=4224
+# INFO [02-19|18:09:12] Loaded most recent local header          number=0 hash=ba2f89…db227a td=524288
+# INFO [02-19|18:09:12] Loaded most recent local full block      number=0 hash=ba2f89…db227a td=524288
+# INFO [02-19|18:09:12] Loaded most recent local fast block      number=0 hash=ba2f89…db227a td=524288
+# INFO [02-19|18:09:12] Regenerated local transaction journal    transactions=0 accounts=0
+# INFO [02-19|18:09:12] Starting P2P networking
+# INFO [02-19|18:09:12] RLPx listener up                         self="enode://d21f521c8084ccb5517b865c2f6dcc7fab768a547ab9352cb2c0730273f54617830ae30e1e2df95c3abd90aec93d3fde25a02c9e3785a2b8cb3d3d9e5895b2c9@[::]:30303?discport=0"
+# INFO [02-19|18:09:12] IPC endpoint opened                      url=\\\\.\\pipe\\geth.ipc
+# INFO [02-19|18:09:12] HTTP endpoint opened                     url=http://127.0.0.1:8545 cors=* vhosts=localhost
+# INFO [02-19|18:09:12] Transaction pool price threshold updated price=18000000000
+# INFO [02-19|18:09:12] Etherbase automatically configured       address=0xD5C80cA6be06843ab42fa5dB121c6b516EfA62D7
+# INFO [02-19|18:09:12] Starting mining operation
+# INFO [02-19|18:09:12] Commit new mining work                   number=1 txs=0 uncles=0 elapsed=499.4µs
+# INFO [02-19|18:09:15] Generating ethash verification cache     epoch=0 percentage=48 elapsed=3.001s
+# INFO [02-19|18:09:18] Generated ethash verification cache      epoch=0 elapsed=5.185s
+# INFO [02-19|18:09:22] Generating DAG in progress               epoch=0 percentage=0  elapsed=3.950s
+# INFO [02-19|18:09:22] Generating DAG in progress               epoch=0 percentage=100  elapsed=6.950s
+############################################################################################################################################################################################################################################################################################
