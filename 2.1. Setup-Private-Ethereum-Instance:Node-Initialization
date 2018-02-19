@@ -1,44 +1,97 @@
-# Testrpc emulates the ethereum node for development purposes.
+# Ganache/Testrpc emulates the ethereum node for development purposes.
 # Always test with full ethereum node before moving to mainNet.
+
+# SUMMARY:
+# 1. Create a working directory
+# 2. Define genesis block
+# 3. Initialize the private ethereum network
+# 4. Create 3 accounts with password - pass1234
 
 # Create a folder to host database and accounts of private node
 mkdir -p ~/ethereum-programming/private
+cd ~/ethereum-programming/private
 
-# Choose a network identifier
-# 1 - for mainchain network
-# 2 - for rockstone test network
-# 3 - for modern test network
-# 4224 - for our purposes
+# Define and create a genesis block
 
-# Create a genesis block
-atom ~/ethereum-programming/private/genesis.json
+# puppeth is a CLI tool installed with geth used to create and monitor features of genesis block
+puppeth
 
-# Copy-Paste the following text and save to "~/ethereum-programming/private/genesis.json"
+# Enter a network Name
+ethereum-programming
+
 ##############################################################################################
-{
- "nonce": "0x0000000000000042",
- "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
- "difficulty": "0x400",
- "alloc": {},
- "coinbase": "0x0000000000000000000000000000000000000000",
- "timestamp": "0x0",
- "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
- "extraData": "0x",
- "gasLimit": "0xffffffff",
- "config": {
-    "chainId": 4224,
-    "homesteadBlock": 0,
-    "eip155Block": 0,
-    "eip158Block": 0
- }
-}
+# What would you like to do? (default = stats)
+#  1. Show network stats
+#  2. Configure new genesis
+#  3. Track new remote server
+#  4. Deploy network components
+##############################################################################################
+# Enter an option
+2
+
+##############################################################################################
+# Which consensus engine to use? (default = clique)
+#  1. Ethash - proof-of-work
+#  2. Clique - proof-of-authority
+##############################################################################################
+# Enter an option
+1
+
+##############################################################################################
+# Choose a network identifier
+# 1    - for main net
+# 2    - for modern test net
+# 3    - for ropstone test net
+# 4    - for Rinkby test net
+# 42   - for Kovan test net
+# 4224 - for our purposes
+##############################################################################################
+# Specify your chain/network ID if you want an explicit one (default = random)
+4224
+# [32mINFO [0m[02-19|17:31:16] Configured new genesis block
+
+##############################################################################################
+# What would you like to do? (default = stats)
+#  1. Show network stats
+#  2. Manage existing genesis
+#  3. Track new remote server
+#  4. Deploy network components
+##############################################################################################
+# Enter an option
+2
+
+##############################################################################################
+#  1. Modify existing fork rules
+#  2. Export genesis configuration
+#  3. Remove genesis configuration
+##############################################################################################
+# Enter an option
+2
+
+##############################################################################################
+# Which file to save the genesis into? (default = ethereum-programming.json)
+
+# [32mINFO [0m[02-19|17:31:41] Exported existing genesis block
+
+##############################################################################################
+# What would you like to do? (default = stats)
+#  1. Show network stats
+#  2. Manage existing genesis
+#  3. Track new remote server
+#  4. Deploy network components
+##############################################################################################
+# Quit Puppeth
+Ctrl + C
+
+# Open the genesis block code
+atom ethereum-programming.json
 ##############################################################################################
 # nonce       - used by proof of work consensus mechanism to ensure enough computation is used 
 # mixhash     - used by proof of work consensus mechanism to ensure enough computation is used
 # difficulty  - difficulty level used to validate a block i.e., avg. number of times a miner runs hashing function to solve consensus puzzle
 # alloc       - you can preallocate funds to some wallet addresses
 # coinbase    - the address at which the reward will be collected after successful mining of the block
-# timestamp   - used by EVM to adjust the level od difficulty that must be applied. the higher timestamp, the higher difficulty
+# timestamp   - used by EVM to adjust the level of difficulty that must be applied. the higher timestamp, the higher difficulty
 #             - also used to ensure the sequence order between blocks is correct
 # parentHash  - the hash of previous block. for genesis block, it is zero
 # extraData   - stores any information to lable blockchain
@@ -52,7 +105,7 @@ atom ~/ethereum-programming/private/genesis.json
 
 # Initiatialize the private ethereum network
 cd ~/ethereum-programming/private
-geth --datadir ~/ethereum-programming/private init genesis.json
+geth --datadir ~/ethereum-programming/private init ethereum-programming.json
 # You will see
 ##############################################################################################
 WARN [01-26|14:44:34] No etherbase set and no accounts found as default
@@ -98,6 +151,6 @@ geth --datadir ~/ethereum-programming/private account new
 
 # Get the list of all accounts
 geth --datadir ~/ethereum-programming/private account list
-# Mining Address - Account #0: {9345500c7d57035d460f18fd632b2b93f4d5e7d6} keystore:///home/lavanya/ethereum-programming/private/keystore/UTC--2018-02-05T18-03-02.909010930Z--9345500c7d57035d460f18fd632b2b93f4d5e7d6
-# DApp 1 Address - Account #1: {91744d742fcbdb3918e7714858a08d0f2b701b35} keystore:///home/lavanya/ethereum-programming/private/keystore/UTC--2018-02-05T18-03-30.702611423Z--91744d742fcbdb3918e7714858a08d0f2b701b35
-# DApp 1 Address - Account #2: {5bf6ab5f9e3579f48769bbbb8336adc7a3b9a869} keystore:///home/lavanya/ethereum-programming/private/keystore/UTC--2018-02-05T18-03-56.509877156Z--5bf6ab5f9e3579f48769bbbb8336adc7a3b9a869
+# Mining Address - Account #0: {d5c80ca6be06843ab42fa5db121c6b516efa62d7} keystore://C:\Users\Jai\ethereum-programming\private\keystore\UTC--2018-02-19T22-52-40.989508700Z--d5c80ca6be06843ab42fa5db121c6b516efa62d7
+# DApp 1 Address - Account #1: {78a9fbb3d4e2aaa45422bea5cbae3c97143d6f97} keystore://C:\Users\Jai\ethereum-programming\private\keystore\UTC--2018-02-19T22-52-56.953421800Z--78a9fbb3d4e2aaa45422bea5cbae3c97143d6f97
+# DApp 1 Address - Account #2: {83076fbbec6d3f51fcb4aa0440e1b14904f98cc3} keystore://C:\Users\Jai\ethereum-programming\private\keystore\UTC--2018-02-19T22-53-20.322849500Z--83076fbbec6d3f51fcb4aa0440e1b14904f98cc3
