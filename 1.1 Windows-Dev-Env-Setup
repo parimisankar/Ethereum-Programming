@@ -38,5 +38,19 @@ npm -v
 npm uninstall -g truffle
 npm install -g truffle@4.0.4
 
+# Install atom
+# Download most recent, stable package from https://github.com/atom/atom/releases
+
+# Quit atom and launch Powershell as an admin
+# Check atom and apm version
+atom -v
+apm -v
+
+# Install ethereum language package in atom
+apm install language-ethereum
+
+# Install git
+# Download installer from https://git-scm.com/download/win
+# Install with defaults
 # Check truffle version
 truffle version
