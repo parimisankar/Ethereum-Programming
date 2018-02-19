@@ -147,10 +147,12 @@ tree .
 
 # Create 3 accounts, 1 - to hold ether rewards from mining, 2 - to be used to create DApp
 geth --datadir ~/ethereum-programming/private account new
+# geth --datadir . account new - If you are in current directory then use .
 # For testing, use same password for all three accounts
 
 # Get the list of all accounts
 geth --datadir ~/ethereum-programming/private account list
+# geth --datadir . account list - If you are in current directory then use . instead of path
 # Mining Address - Account #0: {d5c80ca6be06843ab42fa5db121c6b516efa62d7} keystore://C:\Users\Jai\ethereum-programming\private\keystore\UTC--2018-02-19T22-52-40.989508700Z--d5c80ca6be06843ab42fa5db121c6b516efa62d7
 # DApp 1 Address - Account #1: {78a9fbb3d4e2aaa45422bea5cbae3c97143d6f97} keystore://C:\Users\Jai\ethereum-programming\private\keystore\UTC--2018-02-19T22-52-56.953421800Z--78a9fbb3d4e2aaa45422bea5cbae3c97143d6f97
 # DApp 1 Address - Account #2: {83076fbbec6d3f51fcb4aa0440e1b14904f98cc3} keystore://C:\Users\Jai\ethereum-programming\private\keystore\UTC--2018-02-19T22-53-20.322849500Z--83076fbbec6d3f51fcb4aa0440e1b14904f98cc3
