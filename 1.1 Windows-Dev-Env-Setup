@@ -1,0 +1,42 @@
+# Pre-requisites: Use only Chrome browser
+# Run "Windows PowerShell as an Administrator" --> Search for Powershell and right click and "Run as administrator"
+# Install windows production build tools - "Python" & "Visual basic" using node package manager
+npm install --global --production windows-build-tools
+
+# Create a parent folder for this tutorial
+mkdir C:\Users\Jai\Google Drive\Ethereum-Programming
+
+# Install Geth/Go-Ethereum 
+# - CLI that allows you to run a full ethereum node, 
+# - created in Go and allows to generate blocks, deploy and transact ether
+# - can be used to connect to public networks or create own private networks
+# - allows you to fully test application before deploying to mainnet
+# Download and run the "Geth for Windows.exe" from https://ethereum.github.io/go-ethereum/downloads/
+# Check "Developer Tools" and Install
+
+# Check Geth version
+# From powershell as an admin,
+Geth version
+
+# Install Ganache
+# - Ethereum Blockchain Emulator and Replacement for TestRPC, 
+# - UI allows to inspect blocks and transactions in a more user-friendly way
+# - In memory ethereum node that allows faster testing
+# Download and run the .appx package from http://truffleframework.com/ganache/
+
+# Check for NodeJS and npm
+# From powershell as an admin,
+node -v
+npm -v
+
+# Optional: If NodeJS and npm are not installed
+# Download current.msi package from https://nodejs.org/en/
+# Run the install wizard with defaults
+
+# Uninstall and Install Truffle
+# From powershell as an admin,
+npm uninstall -g truffle
+npm install -g truffle@4.0.4
+
+# Check truffle version
+truffle version
