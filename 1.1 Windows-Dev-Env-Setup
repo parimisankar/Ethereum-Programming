@@ -52,5 +52,9 @@ apm install language-ethereum
 # Install git
 # Download installer from https://git-scm.com/download/win
 # Install with defaults
-# Check truffle version
-truffle version
+# Verify where the Git is installed
+# Right click My Computer --> Properties --> Advanced System Settings --> Environment Variables --> System Variables. Edit PATH 
+# Add to PATH variable
+C:\Program Files\Git\cmd;C:\Program Files\Git\bin
+OR
+C:\Program Files(x86)\Git\cmd;C:\Program Files(x86)\Git\bin
