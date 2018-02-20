@@ -2,7 +2,9 @@
 # 1. Create a folder for the project
 # 2. Initialize npm project
 # 3. Install necessary libraries to compile smart contracts
-# 4. Implement greetings.sol
+# 4. Create and save smart contract - greetings.sol
+# 5. Open Ganache, Compile the smart contract using solidity compiler
+# 6. Deploy the compiled contract to Ganache
 
 # A smart contract is a combination of codelogic and data that is stored in blockchain and executed by EVM.
 # EVM executes EVM bytecode. We can use high level programming languages and compile into EVM bytecode using compilers like Viper, Bamboo and Solidity.
@@ -51,7 +53,7 @@ npm install web3@0.20.0 solc@0.4.18
 # Create a file greetings.sol to implement contract
 atom greetings.sol
 
-# write the following contract
+# write and save the following contract
 ###############################################################################
 # pragma solidity ^0.4.18;
 #
@@ -71,3 +73,28 @@ atom greetings.sol
 #  }
 # }
 ###############################################################################
+
+# Open Ganache from windows
+
+# Compile the smart contract greetings.sol
+cd ~\ethereum-programming\Training\Greetings>
+node
+
+# Load web3.js library
+Web3 = require('web3')
+
+# Instantiate the Web3 function with rpc endpoints
+web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"))
+
+# List all Ganache accounts
+web3.eth.accounts
+
+# Load solidity compiler
+solc = require('solc')
+
+# Load source code
+sourceCode = fs.readFileSync('greetings.sol').toString()
+
+# Compile Source Code with solidity
+compiledCode = solc.compile(sourceCode)
+solc = require('solc')
