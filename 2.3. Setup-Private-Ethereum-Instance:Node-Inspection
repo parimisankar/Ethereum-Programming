@@ -5,7 +5,7 @@ geth attach ipc:\\.\pipe\geth.ipc
 # Confirm that the coinbase matches the Account 0 created in step 2.1.
 # Confirm datadir matches your data directory.
 # If they don't match, the commandline is attached to another node you tested in the past.
-# Makesure you stopped the other node you tested in the past.
+# Make sure you stopped the other node you tested in the past.
 ##########################################################################################
 
 # Console Commands
