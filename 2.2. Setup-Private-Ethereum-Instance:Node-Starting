@@ -1,7 +1,7 @@
 # SUMMARY:
 # 1. Create a script startnode.cmd to run the node
 # 2. Create a file password.sec for password
-# 3. Run the script startnode.cmd --> Generating DAG process takes time. Be patient
+# 3. Run the script startnode.cmd --> Generating DAG process takes time for first time. Be patient
 
 # To start a node and mine ether, we will need a script
 # Create a file startnode.sh
@@ -12,12 +12,12 @@ atom startnode.sh
 ############################################################################################################################################################################################################################################################################################
 geth --networkid 4224 --mine --datadir "." --nodiscover --rpc --rpcport "8545" --port "30303" --rpccorsdomain "*" --nat "any" --rpcapi eth,web3,personal,net --unlock 0 --password ./password.sec
 ############################################################################################################################################################################################################################################################################################
-# networkid    - comes from the config file in genesis.json
-# mine         - indicates that the node should start mining as soon as it is started (--mine enables mining functionality)
-# data dir     - indicates the directory where data is stored
-# nodiscover   - disables peer discovery (by default, peer discovery is on)
-# rpc, rpcport - enables the http rpc server for listening
-# port         - port number used by nodes to spread new transactions and blocks
+# networkid     - comes from the config file in genesis.json
+# mine          - indicates that the node should start mining as soon as it is started (--mine enables mining functionality)
+# data dir      - indicates the directory where data is stored
+# nodiscover    - disables peer discovery (by default, peer discovery is on)
+# rpc, rpcport  - enables the http rpc server for listening
+# port          - port number used by nodes to spread new transactions and blocks
 # rpccorsdomain - enables any ip address to connect to rpc endpoint
 # nat           - specifies the nat parameter
 # rpc api       - lists apis we want to enable on rpc endpoint
