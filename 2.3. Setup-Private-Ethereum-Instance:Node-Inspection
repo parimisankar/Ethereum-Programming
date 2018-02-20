@@ -1,5 +1,5 @@
-# In new terminal and attach the console to the private network
-geth attach
+# In a new terminal, attach the console to the private network
+geth attach ipc:\\.\pipe\geth.ipc
 
 ##########################################################################################
 # Confirm that the coinbase matches the Account 0 created in step 2.1.
