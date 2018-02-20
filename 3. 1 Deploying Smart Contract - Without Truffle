@@ -1,0 +1,73 @@
+# SUMMARY: Building smart contract without truffle
+# 1. Create a folder for the project
+# 2. Initialize npm project
+# 3. Install necessary libraries to compile smart contracts
+# 4. Implement greetings.sol
+
+# A smart contract is a combination of codelogic and data that is stored in blockchain and executed by EVM.
+# EVM executes EVM bytecode. We can use high level programming languages and compile into EVM bytecode using compilers like Viper, Bamboo and Solidity.
+# Solidity is also natively supported by Truffle.
+# Traditional Architecture: Server(Web services and DB) <--> Internet <--> UI Browser (HTML, CSS, JS)
+# Dapp Architecture: Smart Contract on nodes in blockchain <--> Internet <--> Dapp Browser (HTML, CSS, JS, Web3.js)
+
+# Create a folder for the project
+mkdir -p ~\ethereum-programming\Training\Greetings
+cd ~\ethereum-programming\Training\Greetings
+
+# Initialize npm project
+npm init
+# press enter with defaults
+#####################################################################################################################
+# package name: (greetings)
+# version: (1.0.0)
+# description:
+# entry point: (index.js)
+# test command:
+# git repository:
+# keywords:
+# author:
+# license: (ISC)
+# About to write to C:\Users\Jai\ethereum-programming\Training\Greetings\package.json:
+#
+# {
+#   "name": "greetings",
+#   "version": "1.0.0",
+#   "description": "",
+#   "main": "index.js",
+#   "scripts": {
+#     "test": "echo \"Error: no test specified\" && exit 1"
+#   },
+#   "author": "",
+#   "license": "ISC"
+# }
+#
+#
+# Is this ok? (yes) yes
+#####################################################################################################################
+
+# Install JS libraries to compile smart contract and interact with EVM
+npm install web3@0.20.0 solc@0.4.18
+
+# Create a file greetings.sol to implement contract
+atom greetings.sol
+
+# write the following contract
+###############################################################################
+# pragma solidity ^0.4.18;
+#
+# contract Greetings {
+#  string message;
+#
+#  function Greetings() public {
+#    message = "I'm ready!";
+#  }
+#
+#  function setGreetings(string _message) public {
+#    message = _message;
+#  }
+#
+#  function getGreetings() public view returns (string) {
+#    return message;
+#  }
+# }
+###############################################################################
