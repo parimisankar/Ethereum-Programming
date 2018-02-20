@@ -1,0 +1,8 @@
+# Metamask is a chrome extension that allows you to securely access your accounts on ethereum blockchain from a browser.
+# Go to www.metamask.io and download chrome extension
+# Accept terms and create an account on metamask
+# Securely backup the mnemonic
+# Change network to http://loclhost:7545
+# Import all ten private keys from ganache
+# Change netork to localhost 8545
+# Import 3 accounts using the json file in keystore folder
