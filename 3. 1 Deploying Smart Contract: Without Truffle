@@ -5,6 +5,7 @@
 # 4. Create and save smart contract - greetings.sol
 # 5. Open Ganache, Compile the smart contract using solidity compiler
 # 6. Deploy the compiled contract to Ganache
+# 7. Get and Set the values in a contract
 
 # A smart contract is a combination of codelogic and data that is stored in blockchain and executed by EVM.
 # EVM executes EVM bytecode. We can use high level programming languages and compile into EVM bytecode using compilers like Viper, Bamboo and Solidity.
@@ -56,19 +57,19 @@ atom greetings.sol
 # write and save the following contract
 ###############################################################################
 # pragma solidity ^0.4.18;
+# Defined a contract name
+# contract Greetings { # Contract Name
+#  string message;     # Instance Variable 
 #
-# contract Greetings {
-#  string message;
-#
-#  function Greetings() public {
+#  function Greetings() public { # Constructor that can be called only once; Name same as Contract and doesn't return any value
 #    message = "I'm ready!";
 #  }
 #
-#  function setGreetings(string _message) public {
+#  function setGreetings(string _message) public { # Function that is public and doesn't return any value
 #    message = _message;
 #  }
 #
-#  function getGreetings() public view returns (string) {
+#  function getGreetings() public view returns (string) { # Returns the message stored in contract. Wont change the state of contract.
 #    return message;
 #  }
 # }
@@ -83,7 +84,7 @@ node
 # Load web3.js library
 Web3 = require('web3')
 
-# Instantiate the Web3 function with rpc endpoints
+# Instantiate the Web3 function and connect with rpc endpoints
 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"))
 
 # List all Ganache accounts
@@ -95,6 +96,34 @@ solc = require('solc')
 # Load source code
 sourceCode = fs.readFileSync('greetings.sol').toString()
 
-# Compile Source Code with solidity
+# Compile Source Code with solidity, Stores a lot of things in java script objects in a map
 compiledCode = solc.compile(sourceCode)
-solc = require('solc')
+
+# Run the instructions to deploy the contract to Ganache node
+
+# Get the ABI (Application Binary Interface) of the contract
+contractABI = JSON.parse(compiledCode.contracts[':Greetings'].interface)
+
+# Create a contract factory based on ABI using web3.eth.contract
+greetingsContract = web3.eth.contract(contractABI)
+
+# Extract the compiled byte code of the contract
+byteCode = compiledCode.contracts[':Greetings'].bytecode
+
+# Deploy the contract
+greetingsDeployed = greetingsContract.new({data:byteCode,from:web3.eth.accounts[0],gas: 4700000})
+
+# Get the address of the deployed contract
+greetingsDeployed.address
+
+# Get the instance of the contract
+greetingsInstance = greetingsContract.at(greetingsDeployed.address)
+
+# Get the intial value in the greeting
+greetingsInstance.getGreetings()
+
+# Set the value in greeting
+greetingsInstance.setGreetings("Hello Ethereum Programming", {from: web3.eth.accounts[0]})
+
+# Get the new value in the greeting
+greetingsInstance.getGreetings()
