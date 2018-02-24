@@ -1,0 +1,73 @@
+# Truffle is a development framework for Ethereum
+
+# Create a new project directory
+mkdir -p ~\ethereum-programming\Training\GreetingsTruffle
+cd ~\ethereum-programming\Training\GreetingsTruffle
+
+# Check Truffle version
+truffle version
+
+# Initialize Truffle
+truffle init
+
+# Launch atom to analyze the project
+atom .
+# In atom, you will see
+# contract directory - contains all solidity contracts, migrations.sol is used by truffle to track which deployment scripts run on networks
+# migrations directory - contains the sequence of contracts executed, 1_initial_migration.js - deploys a utility contract and always runs first
+# test directory - contains the test scripts used to test contracts when deployed to development node
+# For JS, truffle uses mocha for framework and Chai for assertions
+
+# Copy greetings.sol in contracts folder
+Copy-Item -Path ~\ethereum-programming\Training\Greetings\greetings.sol -Destination ~\ethereum-programming\Training\GreetingsTruffle\contracts\greetings.sol
+
+# Copy 1_initial_migration.js to 2_deploy_contracts.js in migrations folder
+Copy-Item -Path ~\ethereum-programming\Training\GreetingsTruffle\migrations\1_initial_migration.js -Destination ~\ethereum-programming\Training\GreetingsTruffle\migrations\2_deploy_contracts.js
+
+# Edit 2_deploy_contracts.js
+atom migrations\2_deploy_contracts.js
+Ctrl+F and Replace all "Migrations" with "Greetings" and Save
+
+# Open new PowerShell to track the development log
+cd ~\ethereum-programming\Training\GreetingTruffle
+truffle develop --log
+
+# Start truffle development mode
+truffle develop
+
+# Truffle commands on ethereum node without Ganache
+migrate --compile-all --reset # Forces recompilation of all solidity files and resets the state of migration contracts and forces rerun of all migrations scripts
+web3.eth.accounts # gives list of all accounts created on development node
+migrate # will not deploy or compile contracts if they are already deployed to the node in the past
+# build/contracts/*.json tracks a lot of details regarding contracts including the address of network
+Greetings.address # gives the contracts address
+Greetings.deployed().then(function(instance){app = instance;}) # Truffle create higher level abstraction around the contract because of json files in build directory
+app # app is a truffle created object using JavaScript Promises
+app.getGreetings() # Shows I'm Ready
+app.setGreetings("Welcome Ethereum Programmer", {from:web3.eth.accounts[0]})
+app.getGreetings() # Shows Welcome Ethereum Programmer
+.exit # Exits develop mode
+
+# Depoly contract to Ganache bundled with Truffle
+# Open truffle.js
+atom ~\ethereum-programming\Training\GreetingTruffle\truffle.js
+add the following
+########################################################
+# module.exports = {
+#   networks: {
+#       ganache: {
+#         host: "localhost",
+#         port: 7545,
+#         network_id: "*"
+#      }
+#     }
+#  };
+########################################################
+# Compile and migrate the scripts with the ganache network
+truffle migrate --compile-all --reset --network ganache # compiles and loads contracts with ganache network
+truffle console --network ganache # runs the truffle console connecting to network ganache
+Greetings.deployed().then(function(instance){app = instance;}) # Truffle create higher level abstraction around the contract because of json files in build directory
+app.getGreetings() # Shows I'm Ready
+app.setGreetings("Welcome Ethereum Programmer", {from:web3.eth.accounts[0]})
+app.getGreetings() # Shows Welcome Ethereum Programmer
+.exit # Exits develop mode
