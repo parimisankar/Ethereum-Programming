@@ -1,0 +1,10 @@
+# A blockchain is an immutable chain of blocks
+# A transaction contians 4 fields from, to, value and data
+In powershell
+cd ~/ethereum-programming/Training/GreetingTruffle
+truffle migrate --compile-all --reset --network ganache
+truffle console --network ganache
+
+# To get the information in the transaction
+web3.eth.getTransaction("0x69eaa7ed49cc72426706d54c4f52ba70b742ed6910f1223eb0df5f250b4b8ec3")
+web3.eth.getBlock("0x0363a904ee2c5c1928dd499af233f433fa8879b575feb912a5cd7459d9e1f733")
