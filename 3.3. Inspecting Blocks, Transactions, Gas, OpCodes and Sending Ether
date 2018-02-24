@@ -7,4 +7,8 @@ truffle console --network ganache
 
 # To get the information in the transaction
 web3.eth.getTransaction("0x69eaa7ed49cc72426706d54c4f52ba70b742ed6910f1223eb0df5f250b4b8ec3")
-web3.eth.getBlock("0x0363a904ee2c5c1928dd499af233f433fa8879b575feb912a5cd7459d9e1f733")
+web3.eth.getBlock("0x0363a904ee2c5c1928dd499af233f433fa8879b575feb912a5cd7459d9e1f733
+web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"ether").toNumber()
+web3.eth.coinbase
+web3.wth.accounts[0]
+
