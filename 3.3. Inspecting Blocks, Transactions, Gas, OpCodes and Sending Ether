@@ -22,3 +22,8 @@ app.getGreetings({from:web3.eth.accounts[1]}) # Shows I'm Ready in account[1]
 app.setGreetings("Welcome Ethereum Programmer", {from:web3.eth.accounts[1]})
 app.getGreetings({from:web3.eth.accounts[1]}) # Shows Welcome Ethereum Programmer
 .exit # Exits develop mode
+
+# Sending Ether
+web3.eth.sendTransaction({from:web3.eth.accounts[0], to:web3.eth.accounts[1], value: web3.toWei(5, "ether")})
+web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"ether").toNumber()
+web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"ether").toNumber()
