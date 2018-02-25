@@ -5,10 +5,20 @@ cd ~/ethereum-programming/Training/GreetingTruffle
 truffle migrate --compile-all --reset --network ganache
 truffle console --network ganache
 
-# To get the information in the transaction
+# To get the information in the block, transaction and account
 web3.eth.getTransaction("0x69eaa7ed49cc72426706d54c4f52ba70b742ed6910f1223eb0df5f250b4b8ec3")
 web3.eth.getBlock("0x0363a904ee2c5c1928dd499af233f433fa8879b575feb912a5cd7459d9e1f733
-web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"ether").toNumber()
-web3.eth.coinbase
-web3.wth.accounts[0]
 
+# Gas
+# Get balances in first account
+web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"ether").toNumber()
+web3.fromWei(web3.eth.getBalance(web3.eth.coinbase),"ether").toNumber()
+# Get balances in second account
+web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"ether").toNumber()
+
+Greetings.deployed().then(function(instance){app = instance;}) # Truffle create higher level abstraction around the contract because of json files in build directory
+app.getGreetings() # Shows I'm Ready
+app.getGreetings({from:web3.eth.accounts[1]}) # Shows I'm Ready in account[1]
+app.setGreetings("Welcome Ethereum Programmer", {from:web3.eth.accounts[1]})
+app.getGreetings({from:web3.eth.accounts[1]}) # Shows Welcome Ethereum Programmer
+.exit # Exits develop mode
