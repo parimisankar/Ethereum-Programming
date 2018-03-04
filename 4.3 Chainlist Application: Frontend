@@ -1,0 +1,3 @@
+cd ~\ethereum-programming\Training\Chainlist
+npm install
+atom test/ChainList
